@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Genome Justice — Privacy, Bias & Equity in Genomic Research</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-logo">GENOME JUSTICE</div>
+    <div class="nav-links">
+      <a href="#why">Why It Matters</a>
+      <a href="#module1">DNA Ownership</a>
+      <a href="#module2">Missing Data</a>
+      <a href="#module3">Fair AI</a>
+    </div>
+    <div class="nav-progress">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <canvas id="dnaCanvas"></canvas>
+    <div class="hero-content">
+      <div class="hero-eyebrow">An Interactive Research Exhibit</div>
+      <h1 class="hero-title">
+        <span class="title-line">Genome</span>
+        <span class="title-line accent">Justice</span>
+      </h1>
+      <p class="hero-sub">Privacy. Representation. Equity.<br>How genomic research shapes who benefits from medicine — and who gets left behind.</p>
+      <a href="#why" class="cta-btn">Begin Exploration →</a>
+    </div>
+    <div class="hero-scroll-hint">↓ scroll</div>
+  </section>
+
+  <!-- WHY IT MATTERS -->
+  <section id="why" class="section">
+    <div class="section-inner">
+      <div class="section-label">Context</div>
+      <h2 class="section-title">Why This Matters</h2>
+      <p class="section-intro">Genomics promises personalized medicine. But the data behind those promises reflects deep inequities — in who participates, who benefits, and who holds power over our most personal information.</p>
+
+      <div class="stat-grid">
+        <div class="stat-card" data-reveal>
+          <div class="stat-number">78<span class="stat-unit">%</span></div>
+          <div class="stat-label">of participants in genome-wide association studies have been of European ancestry</div>
+          <div class="stat-source">Source: Sirugo et al., Cell 2019</div>
+        </div>
+        <div class="stat-card" data-reveal>
+          <div class="stat-number">26<span class="stat-unit">M+</span></div>
+          <div class="stat-label">people have submitted DNA to consumer testing services like 23andMe and AncestryDNA</div>
+          <div class="stat-source">Source: MIT Technology Review</div>
+        </div>
+        <div class="stat-card" data-reveal>
+          <div class="stat-number">1</div>
+          <div class="stat-label">genome can reveal private health information about relatives who never consented to testing</div>
+          <div class="stat-source">Source: Erlich & Narayanan, Nature Reviews Genetics</div>
+        </div>
+        <div class="stat-card" data-reveal>
+          <div class="stat-number">3<span class="stat-unit">×</span></div>
+          <div class="stat-label">less accurate — AI diagnostic tools trained on non-diverse data can underperform for minority patients</div>
+          <div class="stat-source">Source: Obermeyer et al., Science 2019</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 1: WHO OWNS YOUR DNA -->
+  <section id="module1" class="section module-section">
+    <div class="section-inner">
+      <div class="section-label">Module 01</div>
+      <h2 class="section-title">Who Owns Your DNA?</h2>
+      <p class="section-intro">When you purchase a DNA test, you set off a chain of decisions — most of which happen without your knowledge. Explore the tradeoffs between privacy and research progress.</p>
+
+      <div class="dna-journey">
+        <div class="journey-step active" id="step0">
+          <div class="step-icon">🧬</div>
+          <div class="step-text">You purchase a DNA test kit and send in your sample.</div>
+        </div>
+        <div class="journey-arrow">→</div>
+        <div class="journey-step" id="step1">
+          <div class="step-icon">🔬</div>
+          <div class="step-text">Your sample is sequenced. Your genome is now digital data.</div>
+        </div>
+        <div class="journey-arrow">→</div>
+        <div class="journey-step" id="step2">
+          <div class="step-icon">❓</div>
+          <div class="step-text">What happens next?</div>
+        </div>
+      </div>
+
+      <div class="choice-section">
+        <h3 class="choice-prompt">Choose a data policy:</h3>
+        <div class="choice-grid">
+          <button class="choice-btn" data-choice="store">
+            <span class="choice-icon">🔒</span>
+            <span class="choice-title">Store Forever</span>
+            <span class="choice-desc">Company retains your data indefinitely for future research</span>
+          </button>
+          <button class="choice-btn" data-choice="delete">
+            <span class="choice-icon">🗑️</span>
+            <span class="choice-title">Delete After Study</span>
+            <span class="choice-desc">Data is destroyed once the initial analysis is complete</span>
+          </button>
+          <button class="choice-btn" data-choice="anonymous">
+            <span class="choice-icon">👤</span>
+            <span class="choice-title">Share Anonymously</span>
+            <span class="choice-desc">Stripped of identifiers and shared with research partners</span>
+          </button>
+          <button class="choice-btn" data-choice="sell">
+            <span class="choice-icon">💰</span>
+            <span class="choice-title">Sell to Companies</span>
+            <span class="choice-desc">Pharmaceutical companies pay for access to your data</span>
+          </button>
+          <button class="choice-btn" data-choice="research">
+            <span class="choice-icon">🏥</span>
+            <span class="choice-title">Medical Research Only</span>
+            <span class="choice-desc">Limited to verified academic or public health research</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="score-panel" id="scorePanel">
+        <h3 class="score-title">Policy Impact</h3>
+        <div class="score-grid">
+          <div class="score-item">
+            <div class="score-label">Privacy Protection</div>
+            <div class="score-bar-wrap"><div class="score-bar" id="privacyBar"></div></div>
+            <div class="score-val" id="privacyVal">—</div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">Research Benefit</div>
+            <div class="score-bar-wrap"><div class="score-bar" id="researchBar"></div></div>
+            <div class="score-val" id="researchVal">—</div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">Commercial Use</div>
+            <div class="score-bar-wrap"><div class="score-bar" id="commercialBar"></div></div>
+            <div class="score-val" id="commercialVal">—</div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">Community Trust</div>
+            <div class="score-bar-wrap"><div class="score-bar" id="trustBar"></div></div>
+            <div class="score-val" id="trustVal">—</div>
+          </div>
+        </div>
+        <div class="score-insight" id="scoreInsight"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 2: REPRESENTATION BIAS -->
+  <section id="module2" class="section module-section alt-bg">
+    <div class="section-inner">
+      <div class="section-label">Module 02</div>
+      <h2 class="section-title">Who Is Missing From the Dataset?</h2>
+      <p class="section-intro">The populations included in a genomic study directly determine who benefits from the science. Adjust the sliders below and watch how AI prediction accuracy shifts across groups.</p>
+
+      <div class="bias-simulator">
+        <div class="bias-left">
+          <h3 class="bias-subtitle">Training Dataset Composition</h3>
+          <p class="bias-hint">Drag the sliders to change who is represented in the training data:</p>
+          <div class="slider-group" id="sliderGroup">
+            <div class="slider-item">
+              <div class="slider-header">
+                <span class="slider-label">European</span>
+                <span class="slider-pct" id="pct-european">78%</span>
+              </div>
+              <input type="range" class="pop-slider" id="sl-european" min="5" max="95" value="78" data-pop="european" />
+            </div>
+            <div class="slider-item">
+              <div class="slider-header">
+                <span class="slider-label">African</span>
+                <span class="slider-pct" id="pct-african">8%</span>
+              </div>
+              <input type="range" class="pop-slider" id="sl-african" min="5" max="95" value="8" data-pop="african" />
+            </div>
+            <div class="slider-item">
+              <div class="slider-header">
+                <span class="slider-label">Latino / Hispanic</span>
+                <span class="slider-pct" id="pct-latino">7%</span>
+              </div>
+              <input type="range" class="pop-slider" id="sl-latino" min="5" max="95" value="7" data-pop="latino" />
+            </div>
+            <div class="slider-item">
+              <div class="slider-header">
+                <span class="slider-label">Asian</span>
+                <span class="slider-pct" id="pct-asian">7%</span>
+              </div>
+              <input type="range" class="pop-slider" id="sl-asian" min="5" max="95" value="7" data-pop="asian" />
+            </div>
+          </div>
+          <div class="total-display" id="totalDisplay">Total: 100%</div>
+          <button class="train-btn" id="trainBtn">▶ Train AI Model</button>
+        </div>
+
+        <div class="bias-right">
+          <h3 class="bias-subtitle">Prediction Accuracy by Population</h3>
+          <div class="accuracy-loading" id="accuracyLoading">
+            <div class="loading-steps">
+              <div class="load-step" id="ls1">Preparing dataset...</div>
+              <div class="load-step" id="ls2">Building model...</div>
+              <div class="load-step" id="ls3">Running validation...</div>
+              <div class="load-step" id="ls4">Results ready.</div>
+            </div>
+          </div>
+          <div class="accuracy-results" id="accuracyResults">
+            <div class="acc-bar-item" data-pop="european">
+              <div class="acc-label">European</div>
+              <div class="acc-track"><div class="acc-fill" id="acc-european"></div></div>
+              <div class="acc-pct" id="accpct-european">—</div>
+            </div>
+            <div class="acc-bar-item" data-pop="african">
+              <div class="acc-label">African</div>
+              <div class="acc-track"><div class="acc-fill" id="acc-african"></div></div>
+              <div class="acc-pct" id="accpct-african">—</div>
+            </div>
+            <div class="acc-bar-item" data-pop="latino">
+              <div class="acc-label">Latino / Hispanic</div>
+              <div class="acc-track"><div class="acc-fill" id="acc-latino"></div></div>
+              <div class="acc-pct" id="accpct-latino">—</div>
+            </div>
+            <div class="acc-bar-item" data-pop="asian">
+              <div class="acc-label">Asian</div>
+              <div class="acc-track"><div class="acc-fill" id="acc-asian"></div></div>
+              <div class="acc-pct" id="accpct-asian">—</div>
+            </div>
+            <div class="fairness-score" id="fairnessScore"></div>
+          </div>
+          <p class="bias-note" id="biasNote"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 3: FAIR AI SIMULATOR -->
+  <section id="module3" class="section module-section">
+    <div class="section-inner">
+      <div class="section-label">Module 03</div>
+      <h2 class="section-title">Can We Build Fair Genomic AI?</h2>
+      <p class="section-intro">You're the lead researcher. You have a $1,000,000 budget and one year to build a genomic AI model. Every decision shapes who benefits from your science.</p>
+
+      <div class="simulator">
+        <div class="budget-display">
+          <span class="budget-label">Remaining Budget</span>
+          <span class="budget-amount" id="budgetDisplay">$1,000,000</span>
+        </div>
+
+        <div class="sim-choices">
+          <div class="sim-category">
+            <h3 class="sim-cat-title">Recruitment Sites <span class="sim-cat-hint">(Choose all that apply)</span></h3>
+            <div class="sim-options">
+              <label class="sim-option" data-cost="80000" data-diversity="low" data-fairness="low">
+                <input type="checkbox" class="sim-check" data-key="urban_hospital" />
+                <div class="sim-option-content">
+                  <div class="sim-option-name">Large City Hospitals</div>
+                  <div class="sim-option-stats">Cost: $80,000 · Diversity: Low · Volume: High</div>
+                </div>
+              </label>
+              <label class="sim-option" data-cost="120000" data-diversity="medium" data-fairness="medium">
+                <input type="checkbox" class="sim-check" data-key="community" />
+                <div class="sim-option-content">
+                  <div class="sim-option-name">Community Health Clinics</div>
+                  <div class="sim-option-stats">Cost: $120,000 · Diversity: Medium · Volume: Medium</div>
+                </div>
+              </label>
+              <label class="sim-option" data-cost="200000" data-diversity="high" data-fairness="high">
+                <input type="checkbox" class="sim-check" data-key="tribal" />
+                <div class="sim-option-content">
+                  <div class="sim-option-name">Tribal Health Organizations</div>
+                  <div class="sim-option-stats">Cost: $200,000 · Diversity: Very High · Volume: Low</div>
+                </div>
+              </label>
+              <label class="sim-option" data-cost="150000" data-diversity="medium" data-fairness="medium">
+                <input type="checkbox" class="sim-check" data-key="rural" />
+                <div class="sim-option-content">
+                  <div class="sim-option-name">Rural Hospitals</div>
+                  <div class="sim-option-stats">Cost: $150,000 · Diversity: Medium · Volume: Low</div>
+                </div>
+              </label>
+              <label class="sim-option" data-cost="300000" data-diversity="very_high" data-fairness="very_high">
+                <input type="checkbox" class="sim-check" data-key="international" />
+                <div class="sim-option-content">
+                  <div class="sim-option-name">International Partners</div>
+                  <div class="sim-option-stats">Cost: $300,000 · Diversity: Very High · Volume: High</div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div class="sim-category">
+            <h3 class="sim-cat-title">Consent & Privacy Policy <span class="sim-cat-hint">(Pick one)</span></h3>
+            <div class="sim-options radio-group">
+              <label class="sim-option" data-cost="0" data-privacy="low">
+                <input type="radio" name="privacy" class="sim-radio" data-key="minimal_consent" value="minimal" />
+                <div class="sim-option-content">
+                  <div class="sim-option-name">Minimal Consent Form</div>
+                  <div class="sim-option-stats">Cost: $0 · Privacy: Low · Trust: Low</div>
+                </div>
+              </label>
+              <label class="sim-option" data-cost="50000" data-privacy="medium">
+                <input type="radio" name="privacy" class="sim-radio" data-key="standard_consent" value="standard" />
+                <div class="sim-option-content">
+                  <div class="sim-option-name">Standard IRB Protocol</div>
+                  <div class="sim-option-stats">Cost: $50,000 · Privacy: Medium · Trust: Medium</div>
+                </div>
+              </label>
+              <label class="sim-option" data-cost="120000" data-privacy="high">
+                <input type="radio" name="privacy" class="sim-radio" data-key="community_consent" value="community" />
+                <div class="sim-option-content">
+                  <div class="sim-option-name">Community-Led Consent Process</div>
+                  <div class="sim-option-stats">Cost: $120,000 · Privacy: Very High · Trust: Very High</div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div class="sim-category">
+            <h3 class="sim-cat-title">Outreach & Accessibility <span class="sim-cat-hint">(Choose all that apply)</span></h3>
+            <div class="sim-options">
+              <label class="sim-option" data-cost="30000">
+                <input type="checkbox" class="sim-check" data-key="multilingual" />
+                <div class="sim-option-content">
+                  <div class="sim-option-name">Multilingual Materials</div>
+                  <div class="sim-option-stats">Cost: $30,000 · Impact: Increases enrollment from non-English communities</div>
+                </div>
+              </label>
+              <label class="sim-option" data-cost="40000">
+                <input type="checkbox" class="sim-check" data-key="transport" />
+                <div class="sim-option-content">
+                  <div class="sim-option-name">Transportation Assistance</div>
+                  <div class="sim-option-stats">Cost: $40,000 · Impact: Reduces barriers for rural/low-income participants</div>
+                </div>
+              </label>
+              <label class="sim-option" data-cost="60000">
+                <input type="checkbox" class="sim-check" data-key="community_reps" />
+                <div class="sim-option-content">
+                  <div class="sim-option-name">Community Representatives</div>
+                  <div class="sim-option-stats">Cost: $60,000 · Impact: Builds trust, improves retention</div>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <button class="train-btn" id="simRunBtn">▶ Run My Study</button>
+
+        <div class="sim-results" id="simResults">
+          <h3 class="sim-results-title">Your Study Results</h3>
+          <div class="result-grid">
+            <div class="result-card">
+              <div class="result-icon">🔬</div>
+              <div class="result-label">Scientific Quality</div>
+              <div class="result-score" id="res-science">—</div>
+            </div>
+            <div class="result-card">
+              <div class="result-icon">🛡️</div>
+              <div class="result-label">Privacy Protection</div>
+              <div class="result-score" id="res-privacy">—</div>
+            </div>
+            <div class="result-card">
+              <div class="result-icon">🌍</div>
+              <div class="result-label">Representation</div>
+              <div class="result-score" id="res-representation">—</div>
+            </div>
+            <div class="result-card">
+              <div class="result-icon">🤝</div>
+              <div class="result-label">Community Trust</div>
+              <div class="result-score" id="res-trust">—</div>
+            </div>
+          </div>
+          <div class="sim-feedback" id="simFeedback"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">GENOME JUSTICE</div>
+      <p class="footer-desc">An interactive research exhibit exploring privacy, bias, and equity in genomic science. Built for the Ujima Lab.</p>
+      <div class="footer-links">
+        <a href="#hero">Back to top ↑</a>
+      </div>
+      <p class="footer-credit">References: Sirugo et al. Cell 2019 · Obermeyer et al. Science 2019 · Erlich & Narayanan, Nature Reviews Genetics</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="js/dna-canvas.js"></script>
+  <script src="js/module1.js"></script>
+  <script src="js/module2.js"></script>
+  <script src="js/module3.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
