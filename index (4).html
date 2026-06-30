@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genome Justice</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <h2>🧬 Genome Justice</h2>
+        <nav>
+            <a href="#hero">Home</a>
+            <a href="#module1">Privacy</a>
+            <a href="#module2">Bias</a>
+            <a href="#module3">Research</a>
+            <a href="#module4">Epigenetics</a>
+            <a href="#footer">About</a>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <main id="hero">
+        <canvas id="dnaCanvas"></canvas>
+        <div class="hero-content">
+            <h1>Genome Justice</h1>
+            <p class="subtitle">Exploring Privacy, Bias, and Equity in Genomic Research</p>
+            <p class="description">
+                Discover how genomic data is collected, who benefits from it,
+                and why representation matters in modern medicine.
+            </p>
+            <a href="#why" class="hero-btn">Begin Exploring</a>
+        </div>
+    </main>
+
+    <!-- WHY IT MATTERS -->
+    <section id="why" class="section">
+        <div class="section-inner">
+            <p class="section-tag">Context</p>
+            <h2 class="section-title">Why This Matters</h2>
+            <p class="section-intro">
+                Genomics promises personalized medicine — but the data reflects deep inequities in who participates,
+                who benefits, and who controls our most personal information.
+            </p>
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <div class="stat-number">78%</div>
+                    <div class="stat-label">of genome-wide association study participants have been of European ancestry</div>
+                    <div class="stat-source">Sirugo et al., Cell 2019</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">26M+</div>
+                    <div class="stat-label">people have submitted DNA to consumer testing services like 23andMe and AncestryDNA</div>
+                    <div class="stat-source">MIT Technology Review</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1</div>
+                    <div class="stat-label">genome can reveal private health information about relatives who never consented to testing</div>
+                    <div class="stat-source">Erlich & Narayanan, Nature Reviews Genetics</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3×</div>
+                    <div class="stat-label">less accurate — AI tools trained on non-diverse data can underperform for minority patients</div>
+                    <div class="stat-source">Obermeyer et al., Science 2019</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODULE 1 -->
+    <section id="module1" class="section alt">
+        <div class="section-inner">
+            <p class="section-tag">Module 01</p>
+            <h2 class="section-title">Who Owns Your DNA?</h2>
+            <p class="section-intro">
+                When you purchase a DNA test, you set off a chain of decisions — most of which happen without your knowledge.
+                Explore the tradeoffs between privacy and research progress.
+            </p>
+
+            <div class="journey">
+                <div class="journey-step active" id="step0">
+                    <div class="step-icon">🧬</div>
+                    <p>You purchase a DNA test kit and send in your sample.</p>
+                </div>
+                <div class="journey-arrow">→</div>
+                <div class="journey-step" id="step1">
+                    <div class="step-icon">🔬</div>
+                    <p>Your sample is sequenced. Your genome is now digital data.</p>
+                </div>
+                <div class="journey-arrow">→</div>
+                <div class="journey-step" id="step2">
+                    <div class="step-icon">❓</div>
+                    <p>What happens next?</p>
+                </div>
+            </div>
+
+            <h3 class="choose-label">Choose a data policy:</h3>
+            <div class="choice-grid">
+                <button class="choice-btn" data-choice="store">🔒 Store Forever<span>Company retains your data indefinitely for future research</span></button>
+                <button class="choice-btn" data-choice="delete">🗑️ Delete After Study<span>Data is destroyed once initial analysis is complete</span></button>
+                <button class="choice-btn" data-choice="anonymous">👤 Share Anonymously<span>Stripped of identifiers and shared with research partners</span></button>
+                <button class="choice-btn" data-choice="sell">💰 Sell to Companies<span>Pharmaceutical companies pay for access to your data</span></button>
+                <button class="choice-btn" data-choice="research">🏥 Medical Research Only<span>Limited to verified academic or public health research</span></button>
+            </div>
+
+            <div class="score-panel" id="scorePanel">
+                <h3>Policy Impact</h3>
+                <div class="score-row">
+                    <span class="score-label">Privacy Protection</span>
+                    <div class="bar-track"><div class="bar-fill" id="privacyBar"></div></div>
+                    <span class="bar-pct" id="privacyVal">—</span>
+                </div>
+                <div class="score-row">
+                    <span class="score-label">Research Benefit</span>
+                    <div class="bar-track"><div class="bar-fill" id="researchBar"></div></div>
+                    <span class="bar-pct" id="researchVal">—</span>
+                </div>
+                <div class="score-row">
+                    <span class="score-label">Commercial Use</span>
+                    <div class="bar-track"><div class="bar-fill" id="commercialBar"></div></div>
+                    <span class="bar-pct" id="commercialVal">—</span>
+                </div>
+                <div class="score-row">
+                    <span class="score-label">Community Trust</span>
+                    <div class="bar-track"><div class="bar-fill" id="trustBar"></div></div>
+                    <span class="bar-pct" id="trustVal">—</span>
+                </div>
+                <p class="score-insight" id="scoreInsight"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODULE 2 -->
+    <section id="module2" class="section">
+        <div class="section-inner">
+            <p class="section-tag">Module 02</p>
+            <h2 class="section-title">Who Is Missing From the Dataset?</h2>
+            <p class="section-intro">
+                The populations included in a genomic study determine who benefits from the science.
+                Adjust the sliders and watch how AI prediction accuracy shifts across groups.
+            </p>
+
+            <div class="bias-grid">
+                <div class="bias-left">
+                    <h3>Training Dataset Composition</h3>
+                    <p class="hint">Drag the sliders to change who is represented:</p>
+
+                    <div class="slider-group">
+                        <div class="slider-row">
+                            <span>European</span><span class="pct" id="pct-european">78%</span>
+                        </div>
+                        <input type="range" class="slider" id="sl-european" min="5" max="95" value="78" data-pop="european">
+
+                        <div class="slider-row">
+                            <span>African</span><span class="pct" id="pct-african">8%</span>
+                        </div>
+                        <input type="range" class="slider" id="sl-african" min="5" max="95" value="8" data-pop="african">
+
+                        <div class="slider-row">
+                            <span>Latino / Hispanic</span><span class="pct" id="pct-latino">7%</span>
+                        </div>
+                        <input type="range" class="slider" id="sl-latino" min="5" max="95" value="7" data-pop="latino">
+
+                        <div class="slider-row">
+                            <span>Asian</span><span class="pct" id="pct-asian">7%</span>
+                        </div>
+                        <input type="range" class="slider" id="sl-asian" min="5" max="95" value="7" data-pop="asian">
+                    </div>
+
+                    <button class="action-btn" id="trainBtn">▶ Train AI Model</button>
+                </div>
+
+                <div class="bias-right">
+                    <h3>Prediction Accuracy by Population</h3>
+                    <div id="loadingSteps" class="loading-steps" style="display:none;">
+                        <p id="ls1">Preparing dataset...</p>
+                        <p id="ls2">Building model...</p>
+                        <p id="ls3">Running validation...</p>
+                        <p id="ls4">Results ready.</p>
+                    </div>
+                    <div id="accuracyResults">
+                        <div class="acc-row">
+                            <span class="acc-label">European</span>
+                            <div class="acc-track"><div class="acc-fill" id="acc-european"></div></div>
+                            <span class="acc-pct" id="accpct-european">—</span>
+                        </div>
+                        <div class="acc-row">
+                            <span class="acc-label">African</span>
+                            <div class="acc-track"><div class="acc-fill" id="acc-african"></div></div>
+                            <span class="acc-pct" id="accpct-african">—</span>
+                        </div>
+                        <div class="acc-row">
+                            <span class="acc-label">Latino / Hispanic</span>
+                            <div class="acc-track"><div class="acc-fill" id="acc-latino"></div></div>
+                            <span class="acc-pct" id="accpct-latino">—</span>
+                        </div>
+                        <div class="acc-row">
+                            <span class="acc-label">Asian</span>
+                            <div class="acc-track"><div class="acc-fill" id="acc-asian"></div></div>
+                            <span class="acc-pct" id="accpct-asian">—</span>
+                        </div>
+                        <p class="fairness-note" id="fairnessNote"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODULE 3 -->
+    <section id="module3" class="section alt">
+        <div class="section-inner">
+            <p class="section-tag">Module 03</p>
+            <h2 class="section-title">Can We Build Fair Genomic AI?</h2>
+            <p class="section-intro">
+                You're the lead researcher with a $1,000,000 budget. Every decision shapes who benefits from your science.
+            </p>
+
+            <div class="budget-bar">
+                <span>Remaining Budget</span>
+                <span class="budget-amount" id="budgetDisplay">$1,000,000</span>
+            </div>
+
+            <div class="sim-section">
+                <h3>Recruitment Sites <small>(Select all that apply)</small></h3>
+                <label class="sim-option"><input type="checkbox" class="sim-check" data-key="urban" data-cost="80000"> Large City Hospitals <em>$80,000 · Diversity: Low</em></label>
+                <label class="sim-option"><input type="checkbox" class="sim-check" data-key="community" data-cost="120000"> Community Health Clinics <em>$120,000 · Diversity: Medium</em></label>
+                <label class="sim-option"><input type="checkbox" class="sim-check" data-key="tribal" data-cost="200000"> Tribal Health Organizations <em>$200,000 · Diversity: Very High</em></label>
+                <label class="sim-option"><input type="checkbox" class="sim-check" data-key="rural" data-cost="150000"> Rural Hospitals <em>$150,000 · Diversity: Medium</em></label>
+                <label class="sim-option"><input type="checkbox" class="sim-check" data-key="international" data-cost="300000"> International Partners <em>$300,000 · Diversity: Very High</em></label>
+            </div>
+
+            <div class="sim-section">
+                <h3>Consent & Privacy Policy <small>(Pick one)</small></h3>
+                <label class="sim-option"><input type="radio" name="privacy" class="sim-radio" data-key="minimal" data-cost="0"> Minimal Consent Form <em>$0 · Privacy: Low · Trust: Low</em></label>
+                <label class="sim-option"><input type="radio" name="privacy" class="sim-radio" data-key="standard" data-cost="50000"> Standard IRB Protocol <em>$50,000 · Privacy: Medium · Trust: Medium</em></label>
+                <label class="sim-option"><input type="radio" name="privacy" class="sim-radio" data-key="community_consent" data-cost="120000"> Community-Led Consent Process <em>$120,000 · Privacy: Very High · Trust: Very High</em></label>
+            </div>
+
+            <div class="sim-section">
+                <h3>Outreach & Accessibility <small>(Select all that apply)</small></h3>
+                <label class="sim-option"><input type="checkbox" class="sim-check" data-key="multilingual" data-cost="30000"> Multilingual Materials <em>$30,000 · Increases non-English enrollment</em></label>
+                <label class="sim-option"><input type="checkbox" class="sim-check" data-key="transport" data-cost="40000"> Transportation Assistance <em>$40,000 · Reduces barriers for rural participants</em></label>
+                <label class="sim-option"><input type="checkbox" class="sim-check" data-key="reps" data-cost="60000"> Community Representatives <em>$60,000 · Builds trust, improves retention</em></label>
+            </div>
+
+            <button class="action-btn" id="simRunBtn">▶ Run My Study</button>
+
+            <div class="sim-results" id="simResults">
+                <h3>Your Study Results</h3>
+                <div class="result-grid">
+                    <div class="result-card">🔬<br><small>Scientific Quality</small><br><strong id="res-science">—</strong></div>
+                    <div class="result-card">🛡️<br><small>Privacy Protection</small><br><strong id="res-privacy">—</strong></div>
+                    <div class="result-card">🌍<br><small>Representation</small><br><strong id="res-representation">—</strong></div>
+                    <div class="result-card">🤝<br><small>Community Trust</small><br><strong id="res-trust">—</strong></div>
+                </div>
+                <p class="sim-feedback" id="simFeedback"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODULE 4: STRESS BIOLOGY + EPIGENETICS -->
+    <section id="module4" class="section">
+        <div class="section-inner">
+            <p class="section-tag">Module 04</p>
+            <h2 class="section-title">How Does Stress Get Under Your Skin?</h2>
+            <p class="section-intro">
+                Chronic stress — from discrimination, poverty, and environmental exposure — doesn't just affect how you feel.
+                It changes how your genes are expressed. Adjust the sliders below and watch biology respond in real time.
+            </p>
+
+            <!-- CONCEPT EXPLAINER -->
+            <div class="epi-explainer">
+                <div class="epi-concept-card">
+                    <div class="epi-icon">🔇</div>
+                    <div>
+                        <strong>DNA Methylation</strong>
+                        <p>Chemical tags attach to DNA and silence genes — like putting tape over a light switch. Chronic stress can permanently silence protective genes.</p>
+                    </div>
+                </div>
+                <div class="epi-concept-card">
+                    <div class="epi-icon">🧱</div>
+                    <div>
+                        <strong>Histone Modification</strong>
+                        <p>DNA wraps around histone proteins. Stress hormones can loosen or tighten this wrapping, making stress-response genes easier or harder to activate.</p>
+                    </div>
+                </div>
+                <div class="epi-concept-card">
+                    <div class="epi-icon">🔥</div>
+                    <div>
+                        <strong>Immune Signaling (NF-κB)</strong>
+                        <p>Chronic stress activates inflammatory pathways. The NF-κB pathway stays switched ON, flooding the body with inflammatory signals that damage tissue over time.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- INTERACTIVE SIMULATOR -->
+            <div class="epi-simulator">
+                <div class="epi-controls">
+                    <h3>Adjust Life Conditions</h3>
+                    <p class="hint">Move the sliders to simulate different lived experiences:</p>
+
+                    <div class="epi-slider-group">
+                        <div class="epi-slider-row">
+                            <span>Chronic Stress Level</span>
+                            <span class="epi-pct stress-color" id="stressVal">50%</span>
+                        </div>
+                        <div class="epi-slider-sublabel">Discrimination, financial pressure, neighborhood violence</div>
+                        <input type="range" class="slider epi-slider" id="stressSlider" min="0" max="100" value="50">
+
+                        <div class="epi-slider-row" style="margin-top:20px">
+                            <span>Environmental Quality</span>
+                            <span class="epi-pct env-color" id="envVal">50%</span>
+                        </div>
+                        <div class="epi-slider-sublabel">Air quality, green space, clean water access, food security</div>
+                        <input type="range" class="slider epi-slider" id="envSlider" min="0" max="100" value="50">
+
+                        <div class="epi-slider-row" style="margin-top:20px">
+                            <span>Social Support</span>
+                            <span class="epi-pct support-color" id="supportVal">50%</span>
+                        </div>
+                        <div class="epi-slider-sublabel">Community connection, family, access to healthcare</div>
+                        <input type="range" class="slider epi-slider" id="supportSlider" min="0" max="100" value="50">
+                    </div>
+                </div>
+
+                <div class="epi-outputs">
+                    <h3>Biological Response</h3>
+
+                    <!-- Gene expression visualization -->
+                    <div class="gene-panel">
+                        <div class="gene-panel-title">Gene Expression State</div>
+                        <div class="gene-grid" id="geneGrid">
+                            <!-- Filled by JS -->
+                        </div>
+                        <div class="gene-legend">
+                            <span class="gene-dot active-gene"></span> Active
+                            <span class="gene-dot silenced-gene"></span> Silenced (methylated)
+                            <span class="gene-dot upregulated-gene"></span> Upregulated
+                        </div>
+                    </div>
+
+                    <!-- Bio indicators -->
+                    <div class="bio-indicators">
+                        <div class="bio-row">
+                            <span class="bio-label">🔥 Inflammation (IL-6, TNF-α)</span>
+                            <div class="bio-track"><div class="bio-fill inflammation-fill" id="inflammationBar"></div></div>
+                            <span class="bio-val" id="inflammationVal">—</span>
+                        </div>
+                        <div class="bio-row">
+                            <span class="bio-label">🛡️ Immune Regulation</span>
+                            <div class="bio-track"><div class="bio-fill immune-fill" id="immuneBar"></div></div>
+                            <span class="bio-val" id="immuneVal">—</span>
+                        </div>
+                        <div class="bio-row">
+                            <span class="bio-label">😴 Cortisol (Stress Hormone)</span>
+                            <div class="bio-track"><div class="bio-fill cortisol-fill" id="cortisolBar"></div></div>
+                            <span class="bio-val" id="cortisolVal">—</span>
+                        </div>
+                        <div class="bio-row">
+                            <span class="bio-label">❤️ Cardiovascular Risk</span>
+                            <div class="bio-track"><div class="bio-fill risk-fill" id="riskBar"></div></div>
+                            <span class="bio-val" id="riskVal">—</span>
+                        </div>
+                    </div>
+
+                    <!-- Disease risk summary -->
+                    <div class="disease-panel" id="diseasePanel">
+                        <div class="disease-panel-title">10-Year Disease Risk Estimate</div>
+                        <div class="disease-grid">
+                            <div class="disease-item">
+                                <div class="disease-name">Hypertension</div>
+                                <div class="disease-risk" id="risk-hypertension">—</div>
+                            </div>
+                            <div class="disease-item">
+                                <div class="disease-name">Type 2 Diabetes</div>
+                                <div class="disease-risk" id="risk-diabetes">—</div>
+                            </div>
+                            <div class="disease-item">
+                                <div class="disease-name">Depression</div>
+                                <div class="disease-risk" id="risk-depression">—</div>
+                            </div>
+                            <div class="disease-item">
+                                <div class="disease-name">Autoimmune</div>
+                                <div class="disease-risk" id="risk-autoimmune">—</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="epi-insight" id="epiInsight"></div>
+                </div>
+            </div>
+
+            <!-- UJIMA CONNECTION -->
+            <div class="ujima-callout">
+                <div class="ujima-icon">⚖️</div>
+                <div>
+                    <strong>The Ujima Connection</strong>
+                    <p>These biological changes are not random. Research shows that exposure to racism, neighborhood disinvestment, and economic stress produces measurable epigenetic changes — particularly in Black, Indigenous, and low-income communities. This is called <em>weathering</em>. The science here is not just molecular biology — it is a measurement of systemic inequity written into the body.</p>
+                    <p style="margin-top:10px; font-size:13px; color:#64748b;">Geronimus et al. (2006) · Thayer & Kuzawa (2011) · Miller et al. (2011)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+        <p>🧬 <strong>Genome Justice</strong></p>
+        <p>An interactive research exhibit exploring privacy, bias, and equity in genomic science. Built for the Ujima Lab.</p>
+        <p><a href="#hero">Back to top ↑</a></p>
+        <p class="refs">References: Sirugo et al. Cell 2019 · Obermeyer et al. Science 2019 · Erlich & Narayanan, Nature Reviews Genetics · Geronimus et al. AJPH 2006 · Thayer & Kuzawa, Social Science & Medicine 2011</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
